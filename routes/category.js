@@ -3,11 +3,11 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res) {
-    res.status(404).send('list category')
+    res.render('category/list', {title:'类别列表', categorys: null});
 });
 /* new category. */
 router.get('/new', function(req, res) {
-    res.status(404).send('create category')
+    res.render('category/new', {title:'类别添加'});
 });
 
 router.post('/new', function(req, res) {
