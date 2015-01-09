@@ -7,9 +7,23 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var admin = require('./routes/admin/index');
+var category = require('./routes/category');
+var mongoose = require('mongoose');
 
 var app = express();
+
+// database connection
+mongoose.connect('mongodb://localhost/ruby');
+var db = mongoose.connection;
+
+db.on('error', function(msg) {
+    console.log('Mongoose connection error %s', msg);
+});
+
+db.once('open', function() {
+    console.log('Mongoose connection established');
+});
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -25,7 +39,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
-app.use('/admin', admin);
+app.use('/category', category);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
