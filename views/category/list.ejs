@@ -21,15 +21,16 @@
         </div>
         <!-- /.row -->
 
-        <!--<div class="row">-->
-            <!--<div class="col-lg-12">-->
-                <!--<div class="alert alert-info alert-dismissable">-->
-                    <!--<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>-->
-                    <!--<i class="fa fa-info-circle"></i>  <strong>Like SB Admin?</strong> Try out <a href="http://startbootstrap.com/template-overviews/sb-admin-2" class="alert-link">SB Admin 2</a> for additional features!-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <% if (message.success) { %>
+                <div class="alert alert-success alert-dismissable" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <%=message.success%>
+                </div>
+                <% } %>
+            </div>
+        </div>
 
         <div class="row">
             <div class="col-lg-12">
@@ -44,48 +45,24 @@
                     </tr>
                     </thead>
                     <tbody>
+                    <% categorys.forEach( function(category) { %>
                     <tr>
-                        <td>/index.html</td>
-                        <td>1265</td>
-                        <td>32.3%</td>
-                        <td>$321.33</td>
+                        <td><%= category.name %></td>
+                        <td><%= category.description %></td>
+                        <td><%= category.date %></td>
+                        <td>
+
+                            <a href="/category/<%= category.id %>" >edit</a>
+                            <form role="form" name="deletecategory<%=category.id%>" action="/category/<%=category.id%>" method="post">
+                                <input type="hidden" name="_method" value="delete">
+                                <a href="#" onclick="document.deletecategory<%=category.id%>.submit(); return false;" class="text-danger">Delete</a>
+                                <noscript><button type="submit" class="btn btn-default text-danger">Delete</button></noscript>
+                            </form>
+                        </td>
                     </tr>
-                    <tr>
-                        <td>/about.html</td>
-                        <td>261</td>
-                        <td>33.3%</td>
-                        <td>$234.12</td>
-                    </tr>
-                    <tr>
-                        <td>/sales.html</td>
-                        <td>665</td>
-                        <td>21.3%</td>
-                        <td>$16.34</td>
-                    </tr>
-                    <tr>
-                        <td>/blog.html</td>
-                        <td>9516</td>
-                        <td>89.3%</td>
-                        <td>$1644.43</td>
-                    </tr>
-                    <tr>
-                        <td>/404.html</td>
-                        <td>23</td>
-                        <td>34.3%</td>
-                        <td>$23.52</td>
-                    </tr>
-                    <tr>
-                        <td>/services.html</td>
-                        <td>421</td>
-                        <td>60.3%</td>
-                        <td>$724.32</td>
-                    </tr>
-                    <tr>
-                        <td>/blog/post.html</td>
-                        <td>1233</td>
-                        <td>93.2%</td>
-                        <td>$126.34</td>
-                    </tr>
+                    <% }) %>
+
+
                     </tbody>
                 </table>
 

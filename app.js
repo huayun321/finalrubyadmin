@@ -5,6 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
+var session = require('express-session');
+var flash = require('connect-flash');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -44,6 +46,12 @@ app.use(methodOverride(function(req, res) {
     }
 }));
 app.use(cookieParser());
+app.use(session({secret: 'secret', resave: true, saveUninitialized: true, cookie: { maxAge: 60000 }}));
+app.use(flash());
+app.use(function(req, res, next) {
+    res.locals.message = req.flash();
+    next();
+});
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);

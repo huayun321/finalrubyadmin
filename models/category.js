@@ -1,11 +1,11 @@
 var mongoose = require('mongoose');
 
 var schema = mongoose.Schema({
-    name: String,
-    description: String,
+    name: {type: String, default: ""},
+    description: {type: String, default: ""},
     date: { type: Date, default: Date.now }
 });
 
-var Category = mongoose.model('categorys', schema);
+var Category = mongoose.model('category', schema);
 module.exports = Category;
 
