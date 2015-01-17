@@ -1,0 +1,81 @@
+<% include ../header %>
+
+
+<div id="page-wrapper">
+
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+
+                <ol class="breadcrumb">
+                    <li class="active">
+                        <i class="fa fa-dashboard"></i> 控制台
+                    </li>
+                    <li class="active">
+                        <i class="fa fa-table"></i> <%= title %>
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <div class="row">
+            <div class="col-lg-12">
+                <% if (message.success) { %>
+                <div class="alert alert-success alert-dismissable" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <%=message.success%>
+                </div>
+                <% } %>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+
+                <table class="table table-bordered table-hover table-striped">
+                    <thead>
+                    <tr>
+                        <th>缩略图</th>
+                        <th>大小</th>
+                        <th>添加日期</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% materials.forEach( function(material) { %>
+                    <tr>
+                        <td><img src="/gfsimgs/<%= material.thumbnailId %>" /></td>
+                        <td><%= material.length %></td>
+                        <td><%= material.createdOn %></td>
+                        <td>
+
+                            <a href="/material/<%= material.id %>" >edit</a>
+                            <form role="form" name="deletematerial<%=material.id%>" action="/material/<%=material.id%>" method="post">
+                                <input type="hidden" name="_method" value="delete">
+                                <a href="#" onclick="document.deletematerial<%=material.id%>.submit(); return false;" class="text-danger">Delete</a>
+                                <noscript><button type="submit" class="btn btn-default text-danger">Delete</button></noscript>
+                            </form>
+                        </td>
+                    </tr>
+                    <% }) %>
+
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+        <!-- /.row -->
+
+
+
+    </div>
+    <!-- /.container-fluid -->
+
+</div>
+<!-- /#page-wrapper -->
+
+<% include ../footer %>

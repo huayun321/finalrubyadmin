@@ -1,0 +1,56 @@
+<% include ../header %>
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+
+                <ol class="breadcrumb">
+                    <li class="active">
+                        <i class="fa fa-dashboard"></i> 控制台
+                    </li>
+                    <li class="active">
+                        <i class="fa fa-edit"></i> <%= title %>
+                    </li>
+
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <div class="row">
+            <div class="col-lg-12">
+                <% if (message.success) { %>
+                <div class="alert alert-success alert-dismissable" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <%=message.success%>
+                </div>
+                <% } %>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+
+                <form role="form" enctype="multipart/form-data" action="/material/new" method="post">
+                    <div class="form-group">
+                        <label>文件</label>
+                        <input type="file" name="upload" class="form-control">
+                        <p class="help-block">要上传的图片文件.</p>
+                    </div>
+                    <button type="submit" class="btn btn-default">上传</button>
+
+
+                </form>
+
+            </div>
+        </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container-fluid -->
+
+</div>
+<!-- /#page-wrapper -->
+
+<% include ../footer %>

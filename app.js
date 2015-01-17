@@ -11,12 +11,16 @@ var flash = require('connect-flash');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var category = require('./routes/category');
+var material = require('./routes/material');
+var gfsimgs = require('./routes/gfsimgs');
+
 var mongoose = require('mongoose');
+var gridform = require('gridform');
 
 var app = express();
 
 // database connection
-mongoose.connect('mongodb://localhost/ruby');
+mongoose.connect('mongodb://localhost/ff2');
 var db = mongoose.connection;
 
 db.on('error', function(msg) {
@@ -25,6 +29,8 @@ db.on('error', function(msg) {
 
 db.once('open', function() {
     console.log('Mongoose connection established');
+    gridform.db = db.db;
+    gridform.mongo = mongoose.mongo;
 });
 
 
@@ -57,6 +63,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 app.use('/category', category);
+app.use('/material', material);
+app.use('/gfsimgs', gfsimgs);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

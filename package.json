@@ -16,6 +16,9 @@
     "mongoose": "*",
     "method-override": "*",
     "express-session": "*",
-    "connect-flash": "*"
+    "connect-flash": "*",
+
+    "gridform": "*",
+    "gm": "*"
   }
 }
