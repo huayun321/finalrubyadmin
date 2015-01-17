@@ -13,6 +13,7 @@ var users = require('./routes/users');
 var category = require('./routes/category');
 var material = require('./routes/material');
 var gfsimgs = require('./routes/gfsimgs');
+var template = require('./routes/template');
 
 var mongoose = require('mongoose');
 var gridform = require('gridform');
@@ -65,6 +66,7 @@ app.use('/users', users);
 app.use('/category', category);
 app.use('/material', material);
 app.use('/gfsimgs', gfsimgs);
+app.use('/template', template);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
