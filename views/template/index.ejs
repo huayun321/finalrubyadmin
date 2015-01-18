@@ -22,9 +22,9 @@
             border: 1px solid #000;
             margin: 0 auto;
         }
-        .modal-dialog{
-            width: 835px;
-        }
+        /*.modal-dialog{*/
+            /*width: 835px;*/
+        /*}*/
         /*.modal-content{*/
             /*width: 900px;*/
         /*}*/
@@ -184,7 +184,7 @@
         <!-- /#page-content-wrapper -->
 
         <!-- Modal -->
-        <div class="modal fade modal-canvas" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -192,11 +192,12 @@
                         <h4 class="modal-title" id="myModalLabel">Modal title</h4>
                     </div>
                     <div id="canvas-box" class="modal-body">
-                        <canvas id='modal-canvas' width='800' height='400'></canvas>
+                        模板名称：<input id="templateName" type="text" name="name"><br>
+                        模板描述：<textarea id="templateDesc" ></textarea>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                        <button id="crop" type="button" class="btn btn-primary">填充到图案</button>
+                        <button id="crop" type="button" class="btn btn-primary">添加模板</button>
                     </div>
                 </div>
             </div>

@@ -36,6 +36,11 @@ admin of ruby project
 ##精品管理
     ###加精
 ##模板管理
+    template form
+        name
+        description
+    schema
+    save
     添加
     删除
 

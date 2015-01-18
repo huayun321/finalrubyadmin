@@ -91,7 +91,7 @@ $( document ).ready(function() {
                 var w = (parseInt($('#input2').val(), 10) || 1) * 11.8;
                 var x = (parseInt($('#inputx').val(), 10) || 1) * 11.8;
                 var y = (parseInt($('#inputy').val(), 10) || 1) * 11.8;
-                var svg_path = 'template_svg/heart3.svg';
+                var svg_path = '/template_svg/heart3.svg';
                 fabric.loadSVGFromURL(svg_path, function (objects, options) {
                     var obj = fabric.util.groupSVGElements(objects, options);
                     obj.scaleToHeight(h);
@@ -114,13 +114,27 @@ $( document ).ready(function() {
         $("#wrapper").toggleClass("toggled");
     });
     $('#tool-save').click(function() {
-        var png = canvas.toDataURL();
-        window.location.replace(png);
+
+        $('#myModal').modal();
     });
     $('#tool-clear').click(function() {
         canvas.clear();
     });
+    //save template
+    $('#crop').click(function() {
+        $('#myModal').modal('hide');
+        var name = $("#templateName").val();
+        var desc = $("#templateDesc").val();
+        var json = canvas.toDatalessObject();
+        //window.location.replace(png);
+        var url = "/template/new";
+        var posting = $.post( url, { name: name, description: desc, json: json } );
+        //Put the results in a div
+        posting.done(function( data ) {
+            window.location.replace("/template");
+        });
 
+    });
 
 
 
