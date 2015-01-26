@@ -114,7 +114,9 @@ $( document ).ready(function() {
         $("#wrapper").toggleClass("toggled");
     });
     $('#tool-save').click(function() {
-
+        //var json = JSON.stringify(canvas);
+        //alert(json);
+        //console.log(JSON.stringify(canvas));
         $('#myModal').modal();
     });
     $('#tool-clear').click(function() {
@@ -125,10 +127,11 @@ $( document ).ready(function() {
         $('#myModal').modal('hide');
         var name = $("#templateName").val();
         var desc = $("#templateDesc").val();
-        var json = canvas.toDatalessObject();
+        var json = JSON.stringify(canvas)
+        alert(json);
         //window.location.replace(png);
         var url = "/template/new";
-        var posting = $.post( url, { name: name, description: desc, json: json } );
+        var posting = $.post( url, { name: name, description: desc, obj: json } );
         //Put the results in a div
         posting.done(function( data ) {
             window.location.replace("/template");

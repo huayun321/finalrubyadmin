@@ -21,7 +21,7 @@ var gridform = require('gridform');
 var app = express();
 
 // database connection
-mongoose.connect('mongodb://localhost/ff2');
+mongoose.connect('mongodb://localhost/ff3');
 var db = mongoose.connection;
 
 db.on('error', function(msg) {

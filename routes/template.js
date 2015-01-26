@@ -24,8 +24,8 @@ router.get('/new', function(req, res) {
 });
 
 router.post('/new', function(req, res) {
-
-
+    console.dir(req.body.obj);
+    //req.body.obj = JSON.stringify(req.body.obj);
     Template.create(req.body, function(err, template) {
         if (err) {
             console.log("db error in template /posts: " + err);
@@ -79,13 +79,13 @@ router.put('/:id', function(req, res) {
 
 /* delete category. */
 router.delete('/:id', function(req, res) {
-    Material.findByIdAndRemove(req.params.id, function(err) {
+    Template.findByIdAndRemove(req.params.id, function(err) {
         if (err) {
-            console.log("db save error in DELETE /category/" + req.params.id + ": " + err);
+            console.log("db save error in DELETE /template/" + req.params.id + ": " + err);
             res.render('500');
         } else {
-            req.flash('success', 'Category deleted');
-            res.redirect('/category');
+            req.flash('success', 'template deleted');
+            res.redirect('/template');
         }
     });
 });

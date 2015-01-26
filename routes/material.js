@@ -79,7 +79,8 @@ router.post('/new', function(req, res) {
                 console.log(err);
                 return;
             }
-            res.redirect('/material/new');
+            req.flash('success', 'material added');
+            res.redirect('/material');
 
         })
 

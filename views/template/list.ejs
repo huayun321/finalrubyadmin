@@ -47,12 +47,12 @@
                     <tbody>
                     <% templates.forEach( function(template) { %>
                     <tr>
-                        <td><%= template.name %></td>
+                        <td><%= template.name %><%= template.json %></td>
                         <td><%= template.description %></td>
                         <td><%= template.date %></td>
                         <td>
 
-                            <a href="/template/<%= template.id %>" >edit</a>
+
                             <form role="form" name="deletetemplate<%=template.id%>" action="/template/<%=template.id%>" method="post">
                                 <input type="hidden" name="_method" value="delete">
                                 <a href="#" onclick="document.deletetemplate<%=template.id%>.submit(); return false;" class="text-danger">Delete</a>
