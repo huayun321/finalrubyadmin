@@ -16,6 +16,9 @@ admin of ruby project
     ###用户
         删除
 ##素材管理
+    使用socketio 流上传
+
+
     ###上传
         1、使用Formidable流上传图片
 
@@ -35,6 +38,12 @@ admin of ruby project
     ###删除
 ##精品管理
     ###加精
+##宝石管理
+    加精
+    删除
+##文章管理
+    加分
+    删除
 ##模板管理
     template form
         name
@@ -44,4 +53,7 @@ admin of ruby project
     添加
     删除
 
-
+1、流上传 素材
+    schema
+    
+2、
