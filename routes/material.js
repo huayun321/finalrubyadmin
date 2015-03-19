@@ -9,7 +9,7 @@ var gm = require('gm');
 
 /* GET home page. */
 router.get('/', function(req, res) {
-    Material.find({}).exec(function(err, materials) {
+    Material.find({}).sort({createdOn: -1}).exec(function(err, materials) {
         if (err) {
             console.log("db error in GET /Material: " + err);
             res.render('500');

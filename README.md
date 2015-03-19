@@ -54,6 +54,10 @@ admin of ruby project
     删除
 
 1、流上传 素材
-    schema
-    
-2、
+    schema tag
+
+2、帖子列表
+    加精
+3、宝石列表
+    加精
+4、整理模板的制作

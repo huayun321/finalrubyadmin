@@ -1,4 +1,9 @@
 <% include ../header %>
+<script src="/javascripts/util_image.js"></script>
+<!--socket io-->
+<script src="/socket.io/socket.io.js"></script>
+<script src="/socket.io-stream.js"></script>
+
 <div id="page-wrapper">
     <div class="container-fluid">
         <!-- Page Heading -->
@@ -32,16 +37,24 @@
         <div class="row">
             <div class="col-lg-12">
 
-                <form role="form" enctype="multipart/form-data" action="/material/new" method="post">
+
+
                     <div class="form-group">
-                        <label>文件</label>
-                        <input type="file" name="upload" class="form-control">
-                        <p class="help-block">要上传的图片文件.</p>
+                        <label for="tags">图片标签：</label>
+                        <input type="text" class="form-control" id="tags" placeholder="标签1 标签2">
                     </div>
-                    <button type="submit" class="btn btn-default">上传</button>
+                    <div class="form-group">
+                        <label for="files">选择图片：</label>
+                        <input type="file" id="files" name="uploads" multiple="multiple">
+                        <p class="help-block">不建议选择过多图片</p>
+                    </div>
+
+                    <button id="post"  class="btn btn-default">上传</button>
 
 
-                </form>
+                <p id="progress"></p>
+                <div id="img_box"></div>
+
 
             </div>
         </div>
